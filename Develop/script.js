@@ -121,21 +121,25 @@ var generateBtn = document.querySelector("#generate");
 // if user confirmed lower case, include lower case
 if (lowerConfirm) {
   userCharacters = userCharacters.push(lowerCasedCharacters);
+  console.log("lower case");
 };
 
 // if user confirmed upper case, include upper case
 if (upperConfirm) {
   userCharacters = userCharacters.push(upperCasedCharacters);
+  console.log("upper case");
 };
 
 // if user confirmed numbers, include numbers
 if (numberComfirm) {
   userCharacters = userCharacters.push(numericCharacters);
+  console.log("number");
 };
 
 // if user confirmed special, include special
 if (specialConfirm) {
   userCharacters = userCharacters.push(specialCharacters);
+  console.log("special");
 };
 
 // generate a password
@@ -160,7 +164,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
+  document.getElementById("#password").textContent = password;
 }
 
 // Add event listener to generate button
