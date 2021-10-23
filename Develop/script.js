@@ -121,7 +121,7 @@ var upperCasedCharacters = [
 
 // user selections
 var userCharacters = [];
-passwordArray = [];
+var passwordArray = [];
 
 
 // Get references to the #generate element
@@ -139,38 +139,43 @@ var generatePassword = function () {
   // set string length to user selected value (parse it!)
   userLength = parseInt(Math.floor(passwordLength()));
 
-  // loop to fill each empty position in password (length set by user)
   // if user confirmed lower case, include lower case
   if (lowerConfirm) {
-    userCharacters = userCharacters.push(lowerCasedCharacters);
+    userCharacters.push(lowerCasedCharacters);
     console.log("lower case");
+   // console.log(userCharacters);
   };
 
   // if user confirmed upper case, include upper case
- /* if (upperConfirm) {
-    userCharacters = userCharacters.concat(upperCasedCharacters);
+ if (upperConfirm) {
+    userCharacters.push(upperCasedCharacters);
     console.log("upper case");
-  }; */
+   // console.log(userCharacters);
+  };
 
   // if user confirmed numbers, include numbers
   if (numberComfirm) {
-    userCharacters = userCharacters.push(numericCharacters);
+    userCharacters.push(numericCharacters);
     console.log("number");
+    //console.log(userCharacters);
   };
 
   // if user confirmed special, include special
   if (specialConfirm) {
-    userCharacters = userCharacters.push(specialCharacters);
+    userCharacters.push(specialCharacters);
     console.log("special");
+    //console.log(userCharacters);
   };
 
-  // loop randomly through userCharacters to fill
+  // loop randomly through userCharacters to fill password array
   for (var i = 0; i < userLength; i++) {
     var random = Math.floor(Math.random() * userCharacters.length);
-    passwordArray = passwordArray.push(passwordArray[random]);
+    passwordArray.push(userCharacters[random]);
     console.log(passwordArray);
-    // return passwordArray.toString();
+    
   }
+  passwordArray = passwordArray.flat();
+  return passwordArray.join('');
 };
 
 // Write password to the #password input
@@ -179,7 +184,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-  document.getElementById("#password").textContent = password;
 }
 
 // Add event listener to generate button
