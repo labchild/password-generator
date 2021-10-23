@@ -18,13 +18,20 @@
 // display resulting string by creating element .card-body text-area (replace placeholder text)
 
 // Assignment code here
-var lowerConfirm = window.confirm("Would you like to include lowercase characters in your password?");
-var upperConfirm = window.confirm("Would you like to include uppercase characters in your password?");
-var numberComfirm = window.confirm("Would you like to include numeric characters (numbers) in your password?");
-var specialConfirm = window.confirm("Would you like to include special characters in your password?");
-var passwordLength = window.prompt(
-  "How long would you like your password to be, between 8 and 128 characters? Choose any number, 8 - 128."
-);
+var passwordLength = function () {
+  var length = window.prompt(
+    "How long would you like your password to be, between 8 and 128 characters? Choose any number, 8 - 128."
+  );
+  // check for valid password length
+  if (length < 8 || length > 128) {
+    window.confirm("Please choose a number 8 - 128!");
+    passwordLength();
+  } else {
+    console.log(length);
+    return length;
+  }
+};
+
 // Array of special characters to be included in password
 var specialCharacters = [
   '@',
@@ -111,50 +118,58 @@ var upperCasedCharacters = [
   'Y',
   'Z'
 ];
-var userCharacters = [];
 
+// user selections
+var userCharacters = [];
+passwordArray = [];
 
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-// if user confirmed lower case, include lower case
-if (lowerConfirm) {
-  userCharacters = userCharacters.push(lowerCasedCharacters);
-  console.log("lower case");
-};
-
-// if user confirmed upper case, include upper case
-if (upperConfirm) {
-  userCharacters = userCharacters.push(upperCasedCharacters);
-  console.log("upper case");
-};
-
-// if user confirmed numbers, include numbers
-if (numberComfirm) {
-  userCharacters = userCharacters.push(numericCharacters);
-  console.log("number");
-};
-
-// if user confirmed special, include special
-if (specialConfirm) {
-  userCharacters = userCharacters.push(specialCharacters);
-  console.log("special");
-};
-
 // generate a password
 var generatePassword = function () {
+  // get user options
+  var lowerConfirm = window.confirm("Would you like to include lowercase characters in your password?");
+  var upperConfirm = window.confirm("Would you like to include uppercase characters in your password?");
+  var numberComfirm = window.confirm("Would you like to include numeric characters (numbers) in your password?");
+  var specialConfirm = window.confirm("Would you like to include special characters in your password?");
+  
+
   // set string length to user selected value (parse it!)
-  passwordLength = parseInt(passwordLength);
+  userLength = parseInt(Math.floor(passwordLength()));
 
   // loop to fill each empty position in password (length set by user)
+  // if user confirmed lower case, include lower case
+  if (lowerConfirm) {
+    userCharacters = userCharacters.push(lowerCasedCharacters);
+    console.log("lower case");
+  };
+
+  // if user confirmed upper case, include upper case
+ /* if (upperConfirm) {
+    userCharacters = userCharacters.concat(upperCasedCharacters);
+    console.log("upper case");
+  }; */
+
+  // if user confirmed numbers, include numbers
+  if (numberComfirm) {
+    userCharacters = userCharacters.push(numericCharacters);
+    console.log("number");
+  };
+
+  // if user confirmed special, include special
+  if (specialConfirm) {
+    userCharacters = userCharacters.push(specialCharacters);
+    console.log("special");
+  };
+
   // loop randomly through userCharacters to fill
-  for (var i = 0; i <= passwordLength; i++) {
-    var random = function () {
-      Math.floor(Math.random() * userCharacters);
-    };
-    return 
-   // password = password + 0;
+  for (var i = 0; i < userLength; i++) {
+    var random = Math.floor(Math.random() * userCharacters.length);
+    passwordArray = passwordArray.push(passwordArray[random]);
+    console.log(passwordArray);
+    // return passwordArray.toString();
   }
 };
 
