@@ -1,5 +1,6 @@
 # password-generator
 A web app to generate passwords.
+![password-generator preview](./assets/pass-gen-preview.png)
 
 ## Description
 A web app that will generate a secure password made from random characters. The length and character sets used to create the password are set by the user. User sets the password length between 8 and 128 characters.
