@@ -23,7 +23,7 @@ password-generator can be found at https://labchild.github.io/password-generator
 You can download the repo and check out my code at https://github.com/labchild/password-generator.
 
 ## Author & Acknowledgements
-Refactored and deployed by Lelah Bates Childs.
+Written and deployed by Lelah Bates Childs.
 
 Thank you to my bootcamp instructional team and cohort, for helping me along this journey to become a developer.
 
